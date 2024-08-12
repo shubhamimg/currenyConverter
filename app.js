@@ -13,10 +13,10 @@ for (let select of dropdowns) {
   for (currCode in countryList) {
     let newOption = document.createElement("option");
     newOption.innerText = currCode;
-    newOption.value = currCode;
-    if (select.name === "from" && currCode === "USD") {
+    newOption.value = countryList[currCode];
+    if (select.name === "from" && countryList[currCode] === "USD") {
       newOption.selected = "selected";
-    } else if (select.name === "to" && currCode === "INR") {
+    } else if (select.name === "to" && countryList[currCode] === "INR") {
       newOption.selected = "selected";
     }
     select.append(newOption);
@@ -53,12 +53,11 @@ const updateExchnageRate = async () =>{
 const updateFlag = (element, value) => {
   let img = document.querySelectorAll(".flagImg");
   let currCode = element.value;
-  let countryCode = countryList[currCode];
-  console.log(countryCode, value);
+
   if (value == "from") {
-    img[0].src = `https://flagsapi.com/${countryCode}/flat/64.png`;
+    img[0].src = `https://flagsapi.com/${currCode.slice(0,2)}/flat/64.png`;
   } else {
-    img[1].src = `https://flagsapi.com/${countryCode}/flat/64.png`;
+    img[1].src = `https://flagsapi.com/${currCode.slice(0,2)}/flat/64.png`;
   }
 };
 
