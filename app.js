@@ -52,7 +52,8 @@ const updateExchnageRate = async () =>{
 
 const updateFlag = (element, value) => {
   let img = document.querySelectorAll(".flagImg");
-  let currCode = element.value;
+  let currCode = element.value  === "EUR" ? "FRA" : element.value;
+
 
   if (value == "from") {
     img[0].src = `https://flagsapi.com/${currCode.slice(0,2)}/flat/64.png`;
